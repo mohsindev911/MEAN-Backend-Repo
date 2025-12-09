@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-700">Post App</h1>
+        <a 
+            href="/logout" 
+            class="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition font-medium">
+            Logout
+        </a>
+    </nav>
+
+    <div class="max-w-3xl mx-auto py-10 px-4">
+
+        <!-- Welcome Card -->
+        <div class="bg-white shadow-xl rounded-2xl p-8 mb-10 border border-gray-200">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">
+                Welcome, <span class="text-blue-600"><%= user.UserName %></span> — let's post something ✨
+            </h2>
+
+            <form action="/post" method="post" class="space-y-6">
+
+                <textarea 
+                    name="content"
+                    rows="4"
+                    placeholder="What's on your mind today?"
+                    class="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
+                ></textarea>
+
+                <button 
+                    type="submit"
+                    class="w-full py-3 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition">
+                    Post Content
+                </button>
+            </form>
+        </div>
+
+        <!-- Posts Section -->
+        <div class="bg-white shadow-xl rounded-2xl p-8 border border-gray-200">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-8 text-center">
+                Your Posts
+            </h2>
+
+            <div class="space-y-6">
+
+                <% if (user.posts.length > 0) { %>
+
+                    <% user.posts.reverse().forEach(function(post){ %>
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl hover:shadow-md transition cursor-pointer">
+                            <p class="text-sm text-gray-500">@<%= user.UserName %></p>
+                            <p class="mt-3 text-lg text-gray-800 leading-relaxed">
+                                <span class="font-semibold text-gray-700">Content: </span>
+                                <%= post.content %>
+                            </p>
+                            <p class="mt-4"><%= post.likes.length %></p>
+                            <div class="btns flex gap-4 mt-4">
+                                <a class="text-blue-500" href="/like/<%= post._id %>">
+                                   <%= post.likes.indexOf(user._id)===-1 ? 'like' : 'unlike' %>
+                                </a>
+                                <a class="text-zinc-600" href="/edit/<%= post._id %>">Edit</a>
+                                <a class="text-red-600" href="/delete/<%= post._id %>">Delete</a>
+
+                            </div>
+                        </div>
+                    <% }) %>
+
+                <% } else { %>
+
+                    <p class="text-center text-gray-500 text-lg py-5">
+                        No posts yet. Start posting something!
+                    </p>
+
+                <% } %>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

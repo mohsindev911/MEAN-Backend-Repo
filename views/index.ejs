@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center py-10">
+
+    <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+
+        <!-- Toggle Header -->
+        <div class="flex items-center justify-center mb-8">
+            <div class="bg-gray-200 p-1 rounded-full flex w-64">
+
+                <!-- Login Button -->
+                <a href="/login"
+                   class="w-1/2 text-center py-2 rounded-full font-medium 
+                          text-gray-600 hover:bg-white hover:shadow-inner transition">
+                    Login
+                </a>
+
+                <!-- Register Button (Active) -->
+                <a href="/"
+                   class="w-1/2 text-center py-2 rounded-full font-medium 
+                          bg-blue-600 text-white">
+                    Register
+                </a>
+
+            </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+            Create Your Account
+        </h2>
+
+        <!-- Register Form -->
+        <form action="/register" method="post" class="space-y-5">
+
+            <input 
+                type="text" 
+                name="UserName" 
+                placeholder="Enter Username"
+                class="w-full p-3 border border-gray-300 rounded-xl text-gray-700 
+                       focus:ring-2 focus:ring-blue-500 outline-none"
+            >
+
+            <input 
+                type="text" 
+                name="email" 
+                placeholder="Enter Email"
+                class="w-full p-3 border border-gray-300 rounded-xl text-gray-700 
+                       focus:ring-2 focus:ring-blue-500 outline-none"
+            >
+
+            <input 
+                type="password" 
+                name="password" 
+                placeholder="Enter Password"
+                class="w-full p-3 border border-gray-300 rounded-xl text-gray-700 
+                       focus:ring-2 focus:ring-blue-500 outline-none"
+            >
+
+            <input 
+                type="number" 
+                name="age" 
+                placeholder="Enter Age"
+                class="w-full p-3 border border-gray-300 rounded-xl text-gray-700 
+                       focus:ring-2 focus:ring-blue-500 outline-none"
+            >
+
+            <button 
+                type="submit"
+                class="w-full py-3 bg-blue-600 text-white text-lg font-medium rounded-xl 
+                       hover:bg-blue-700 transition">
+                Sign Up
+            </button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-600">Already have an account?</p>
+            <a href="/login"
+               class="text-blue-600 font-medium hover:underline">
+                Go to Login →
+            </a>
+
+           
+        </div>
+
+    </div>
+
+</body>
+</html>
