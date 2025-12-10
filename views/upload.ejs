@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <form action="/upload" method="post" enctype="multipart/form-data" 
+          class="bg-white p-6 rounded-lg border w-full max-w-sm space-y-4">
+
+        <h2 class="text-xl font-semibold text-gray-700 text-center">Upload Profile Picture</h2>
+
+        <label class="block">
+            <span class="text-gray-600 text-sm">Choose Image</span>
+            <input 
+                type="file" 
+                name="image"
+                class="mt-2 block w-full text-sm text-gray-700 
+                       border rounded-md px-3 py-2 cursor-pointer 
+                       file:mr-4 file:py-2 file:px-4 
+                       file:rounded-md file:border-0 
+                       file:text-sm file:font-semibold 
+                       file:bg-blue-600 file:text-white 
+                       hover:file:bg-blue-700"
+            />
+        </label>
+
+        <button 
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded-md text-sm font-medium hover:bg-blue-700">
+            Upload
+        </button>
+
+    </form>
+
+</body>
+</html>

@@ -7,6 +7,8 @@ const PostModel=require('./Models/posts');
 const cookie=require('cookie-parser')
 const bcrypt=require('bcrypt')
 app.use(cookie());
+const upload=require('./config/multerconfig')
+
 
 
 app.use(express.json());
@@ -103,8 +105,15 @@ app.post('/edit/:id',isLoggedIn, async (req, res)=>{
  let post= await PostModel.findOneAndUpdate({_id:req.params.id},{content:req.body.content}).populate('user')
     res.redirect('/profile')
 })
-
-
+app.get('/profile/upload',isLoggedIn, async (req, res)=>{
+    res.render('upload')
+})
+app.post('/upload', isLoggedIn , upload.single('image'), async (req, res)=>{
+let user=await UserModel.findOne({email:req.user.email})
+ user.profilePic=req.file.filename;
+ await user.save()
+ res.redirect('/profile')
+})
 function isLoggedIn(req, res, next){
 if(req.cookies.token=="") return res.redirect('/login')
 else{
